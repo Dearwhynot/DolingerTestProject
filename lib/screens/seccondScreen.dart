@@ -48,7 +48,7 @@ class _MyHomePageState extends State<MyHomePage> {
         sum: 0),
     Goods(title: 'Приборы', price: 10, quantity: 0, sum: 0),
     Goods(title: 'Соус тар-тар', price: 20, quantity: 0, sum: 0),
-    Goods(title: 'Соус красный острый', price: 30.3, quantity: 0, sum: 0),
+    Goods(title: 'Соус красный острый', price: 30, quantity: 0, sum: 0),
     Goods(title: 'Фугу', price: 50, quantity: 0, sum: 0),
   ];
   var totalAmount = 0.0;
@@ -145,7 +145,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 ),
                               ),
                               Expanded(
-                                flex: 2,
+                                flex: 3,
                                 child: Text(
                                   "x" + totalQuantity.toString(),
                                   style: TextStyle(
@@ -156,7 +156,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 ),
                               ),
                               Expanded(
-                                flex: 3,
+                                flex: 4,
                                 child: Padding(
                                   padding: EdgeInsets.only(right: 20),
                                   child: Text(
@@ -240,7 +240,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 trailing: Container(
                   alignment: Alignment.center,
-                  width: 50.0,
+                  width: 55.0,
                   child: Padding(
                     padding: const EdgeInsets.only(right: 10),
                     child: Align(

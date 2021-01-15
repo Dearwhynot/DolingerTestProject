@@ -63,124 +63,127 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        child: Column(
-          children: [
-            Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  Container(
-                    child: Align(
-                      alignment: Alignment.topCenter,
-                      child: AspectRatio(
-                        aspectRatio: 4 / 3,
-                        child: CachedNetworkImage(
-                          imageUrl: widget.url,
-                          imageBuilder: (context, imageProvider) => Container(
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                image: imageProvider,
-                                fit: BoxFit.none,
+      resizeToAvoidBottomPadding: false,
+      body: SingleChildScrollView(
+        child: Container(
+          child: Column(
+            children: [
+              Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    Container(
+                      child: Align(
+                        alignment: Alignment.topCenter,
+                        child: AspectRatio(
+                          aspectRatio: 4 / 3,
+                          child: CachedNetworkImage(
+                            imageUrl: widget.url,
+                            imageBuilder: (context, imageProvider) => Container(
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                  image: imageProvider,
+                                  fit: BoxFit.none,
+                                ),
                               ),
                             ),
+                            placeholder: widget.showPlaceholderCirc
+                                ? (context, url) => CircularProgressIndicator()
+                                : null,
+                            errorWidget: (context, url, error) =>
+                                Icon(Icons.error),
                           ),
-                          placeholder: widget.showPlaceholderCirc
-                              ? (context, url) => CircularProgressIndicator()
-                              : null,
-                          errorWidget: (context, url, error) =>
-                              Icon(Icons.error),
                         ),
                       ),
                     ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(left: 5),
-                    child: Text(
-                      'Произвольный текст как заголовок',
-                      style: Theme.of(context).textTheme.headline4,
-                      // maxLines: 3,
-                    ),
-                  ),
-                  Container(
-                    height: 400.0,
-                    // color: Colors.red,
-                    child: firstWidgetFourElements(
-                        widget.url, widget.quantityItems),
-                    // child: null,
-                  ),
-                  Padding(
-                    padding: EdgeInsets.all(10),
-                    child: Container(
-                      decoration: DottedDecoration(
-                        shape: Shape.line,
-                        linePosition: LinePosition.top,
-                        strokeWidth: 2.9,
-                        dash: <int>[2, 6],
+                    Padding(
+                      padding: EdgeInsets.only(left: 5),
+                      child: Text(
+                        'Произвольный текст как заголовок',
+                        style: Theme.of(context).textTheme.headline4,
+                        // maxLines: 3,
                       ),
+                    ),
+                    Container(
+                      height: 400.0,
+                      // color: Colors.red,
+                      child: firstWidgetFourElements(
+                          widget.url, widget.quantityItems),
+                      // child: null,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.all(10),
                       child: Container(
                         decoration: DottedDecoration(
                           shape: Shape.line,
-                          linePosition: LinePosition.bottom,
+                          linePosition: LinePosition.top,
                           strokeWidth: 2.9,
                           dash: <int>[2, 6],
                         ),
                         child: Container(
-                          height: 50.0,
-                          color: Colors.grey[300],
-                          child: Row(
-                            children: <Widget>[
-                              Expanded(
-                                flex: 10,
-                                child: Padding(
-                                  padding: EdgeInsets.only(left: 10),
-                                  child: Text(
-                                    "Дополнительно",
-                                    style: TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.grey[700],
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Expanded(
-                                flex: 3,
-                                child: Text(
-                                  "x" + totalQuantity.toString(),
-                                  style: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.grey[700],
-                                  ),
-                                ),
-                              ),
-                              Expanded(
-                                flex: 4,
-                                child: Padding(
-                                  padding: EdgeInsets.only(right: 20),
-                                  child: Text(
-                                    totalAmount.toStringAsFixed(2),
-                                    textAlign: TextAlign.right,
-                                    style: TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.grey[700],
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
+                          decoration: DottedDecoration(
+                            shape: Shape.line,
+                            linePosition: LinePosition.bottom,
+                            strokeWidth: 2.9,
+                            dash: <int>[2, 6],
                           ),
-                          // child: null,
+                          child: Container(
+                            height: 50.0,
+                            color: Colors.grey[300],
+                            child: Row(
+                              children: <Widget>[
+                                Expanded(
+                                  flex: 10,
+                                  child: Padding(
+                                    padding: EdgeInsets.only(left: 10),
+                                    child: Text(
+                                      "Дополнительно",
+                                      style: TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.grey[700],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Expanded(
+                                  flex: 3,
+                                  child: Text(
+                                    "x" + totalQuantity.toString(),
+                                    style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.grey[700],
+                                    ),
+                                  ),
+                                ),
+                                Expanded(
+                                  flex: 4,
+                                  child: Padding(
+                                    padding: EdgeInsets.only(right: 20),
+                                    child: Text(
+                                      totalAmount.toStringAsFixed(2),
+                                      textAlign: TextAlign.right,
+                                      style: TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.grey[700],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            // child: null,
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
@@ -266,6 +269,8 @@ class _MyHomePageState extends State<MyHomePage> {
       // color: Colors.red,
       height: 50,
       child: Stack(
+        // fit: StackFit.expand,
+        // alignment: Alignment.centerRight,
         children: <Widget>[
           Positioned(
             bottom: 7,
